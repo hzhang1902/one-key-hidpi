@@ -23,7 +23,7 @@ macOS 的 DPI 机制和 Windows 下不一样，比如 1080p 的屏幕在 Windows
 1.远程模式: 在终端输入以下命令回车即可
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/xzhih/one-key-hidpi/master/hidpi.sh)"
+bash -c "$(curl -fsSL https://hzhang1902.github.io/one-key-hidpi/hidpi.sh)"
 ```
 
 2.本地模式: 下载项目解压,双击 `hidpi.command` 运行
@@ -46,14 +46,14 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/xzhih/one-key-hidpi/mast
     
 ```bash
 ls /Volumes/
-cd /Volumes/你的系统盘/System/Library/Displays/Contents/Resources/Overrides/HIDPI
+cd /Volumes/你的系统盘/Library/Displays/Contents/Resources/Overrides/HIDPI
 
 ./disable
 ```
 
 2. 手动恢复
 
-使用终端删除 `/System/Library/Displays/Contents/Resources/Overrides` 下删除显示器 VendorID 对应的文件夹，并把 `HIDPI/backup` 文件夹中的备份复制出来。
+使用终端删除 `/Library/Displays/Contents/Resources/Overrides` 下删除显示器 VendorID 对应的文件夹，并把 `HIDPI/backup` 文件夹中的备份复制出来。
 
 请使用单个显示器执行以下命令，笔记本关闭外接显示器的 HIDPI 时请关闭内置显示器
 
@@ -61,7 +61,7 @@ cd /Volumes/你的系统盘/System/Library/Displays/Contents/Resources/Overrides
 
 ```bash
 ls /Volumes/
-cd /Volumes/你的系统盘/System/Library/Displays/Contents/Resources/Overrides
+cd /Volumes/你的系统盘/Library/Displays/Contents/Resources/Overrides
 EDID=($(ioreg -lw0 | grep -i "IODisplayEDID" | sed -e "/[^<]*</s///" -e "s/\>//"))
 Vid=($(echo $EDID | cut -c18-20))
 rm -rf ./DisplayVendorID-$Vid
